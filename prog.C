@@ -64,23 +64,42 @@
     
     void humour(int ran_num)
     {
-      printf("%d \n",ran_num);
+      
       switch(ran_num)
       {
         
-        case 0: printf("I need to sleep,Fast >.<,else enter m to exit\n");
+        case 0: 
+        printf("\n");
+        printf("I need to sleep,Enter the next Charecter Fast >.<,else enter m to exit\n");
         break;
-        case 1: printf("Come on,I have a date.! Enter the next Charecter ASAP :),else enter m to exit \n");
+        case 1: 
+          printf("\n");
+          printf("Come on,I have a date.! Enter the next Charecter ASAP :),else enter m to exit \n");
         break;
-        case 2: printf("Uff..Human's are soo slow.! next please :D,else enter m to exit \n");
+        case 2: 
+         
+          printf("\n");
+          printf("Uff..Human's are soo slow.! next please :D,else enter m to exit \n");
         break;
-        case 3: printf("I'm sure you can't break this code.! Go on waste you time by entering the next char :p ,else enter m to exit\n");
+        case 3: 
+         
+          printf("\n");
+          printf("I'm sure you can't break this code.! Go on waste you time by entering the next char :p ,else enter m to exit\n");
         break;
-        case 4: printf("I'm out of jokes.! continue please :(,else enter m to exit\n");
+        case 4:
+         
+          printf("\n");
+        printf("I'm out of jokes.! continue please :(,else enter m to exit\n");
         break;
-        case 5: printf("beep beep beep beeeeeeep , don't laught.Even i like to sing.! next Please :|,else enter m to exit\n ");
+        case 5:
+         
+          printf("\n");
+        printf("beep beep beep beeeeeeep , don't laught.Even i like to sing.! next Please :|,else enter m to exit\n ");
         break;
-        case 6: printf("How,many more inputs?But I'm sure not more than the number of Holidays RIT students get in odd sem 0_o,Next Pease.!,else enter m to exit\n");
+        case 6:
+         
+          printf("\n");
+        printf("How,many more inputs?But I'm sure not more than the number of Holidays RIT students get in odd sem 0_o,Next Pease.!,else enter m to exit\n");
         break;
         
         default : printf("Enter the next one please,else enter m to exit\n");
@@ -100,6 +119,7 @@
         char name[20];
         printf("Hello,may I know your name?");
         scanf("%s",name);
+        printf("\n");
         printf("%s, I'm Pattern Patrick\n",name);
         printf("I can help you to recognize Pattern of the form xCyD\n");
         printf("But be fast.\n");
