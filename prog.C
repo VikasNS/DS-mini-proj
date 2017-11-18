@@ -1,4 +1,6 @@
       #include<stdio.h>
+      #include<stdlib.h>
+      #include<time.h>
       #define size 100
     struct stack
 
@@ -59,21 +61,51 @@
       printf("The number of elements are %d \n ",s.top + 1);
 
     }
+    
+    void humour(int ran_num)
+    {
+      printf("%d \n",ran_num);
+      switch(ran_num)
+      {
+        
+        case 0: printf("I need to sleep,Fast >.<,else enter m to exit\n");
+        break;
+        case 1: printf("Come on,I have a date.! Enter the next Charecter ASAP :),else enter m to exit \n");
+        break;
+        case 2: printf("Uff..Human's are soo slow.! next please :D,else enter m to exit \n");
+        break;
+        case 3: printf("I'm sure you can't break this code.! Go on waste you time by entering the next char :p ,else enter m to exit\n");
+        break;
+        case 4: printf("I'm out of jokes.! continue please :(,else enter m to exit\n");
+        break;
+        case 5: printf("beep beep beep beeeeeeep , don't laught.Even i like to sing.! next Please :|,else enter m to exit\n ");
+        break;
+        case 6: printf("How,many more inputs?But I'm sure not more than the number of Holidays RIT students get in odd sem 0_o,Next Pease.!,else enter m to exit\n");
+        break;
+        
+        default : printf("Enter the next one please,else enter m to exit\n");
+        
+      }
+    }
 
     int main() 
 
     {
 
         stack mystack;
-
+        srand( time(NULL) );
         int valid=1;
         int foundm=0;
         mystack.top=-1;
-
-        
+        char name[20];
+        printf("Hello,may I know your name?");
+        scanf("%s",name);
+        printf("%s, I'm Pattern Patrick\n",name);
+        printf("I can help you to recognize Pattern of the form xCyD\n");
+        printf("But be fast.\n");
 
         char cha;
-        printf("Enter the  Charecter,If want to exit enter m \n");
+        printf("Enter the Charecter please,enter m to exit \n");
         scanf(" %c",&cha);
 
         
@@ -95,7 +127,7 @@
 
              {
 
-               printf("Enter the  Charecter,If want to exit enter m \n");
+               humour(rand()%8);
                scanf(" %c",&cha);
                if(cha=='C') break;
                else
@@ -118,7 +150,7 @@
              if(valid) 
              {
                
-               printf("Enter the  Charecter,If want to exit enter m \n");
+               humour(rand()%8);
                scanf(" %c",&cha);
                if(cha=='m') foundm=1;
                else if(cha!='D') 
@@ -141,7 +173,7 @@
 
           {
               
-              printf("Enter the  Charecter,If want to exit enter m \n");
+              humour(rand()%8);
               scanf(" %c",&cha);
 
           }
@@ -154,13 +186,18 @@
 
          
 
-        if(isEmpty(mystack) && valid ) printf("valid expression \n");
+        if(isEmpty(mystack) && valid ) 
+        {
+          printf("%s Vola.! You have entered a valid expression \n",name);
+          printf("If i was useful,Give these guys some bonus marks.! \n");
+        }
 
         else
 
         {
 
-          printf("InValid expression");
+          printf("%s Sorry.! You have entered an Invalid expression.!\n",name);
+          printf("If i was useful,Give these guys some bonus marks.! \n");
 
         }
 
