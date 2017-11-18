@@ -1,91 +1,177 @@
-    #include<stdio.h>
+      #include<stdio.h>
+      #define size 100
     struct stack
+
     {
-        int info[100];
+        //making the array int enable's the program to be even compatible number
+        //ie: We can recognize even numerical patter
+        int info[size];
+
         int top;
+
     };
+
     typedef struct stack stack;
+
     
+
     void push(stack *s,int ele)
+
     {
+
         s->info[++(s->top)]=ele;
+
     }
+
     
+
     int pop(stack *s)
+
     {
+
         return s->info[(s->top)--];
+
     }
+
     int isEmpty(stack s)
-    {
+  {
+
         return s.top==-1;
+
     }
+
     void display(stack s)
+
     {
+
         printf("Contens of stack are \n ");
+
         for(int i=0;i<=s.top;i++) printf("%c \n",s.info[i]);
+
     }
+
     
+
     void printsize(stack s)
+
     {
+
       printf("The number of elements are %d \n ",s.top + 1);
+
     }
+
     int main() 
+
     {
+
         stack mystack;
+
         int valid=1;
+        int foundm=0;
         mystack.top=-1;
+
         
+
         char cha;
+        printf("Enter the  Charecter,If want to exit enter m \n");
         scanf(" %c",&cha);
-        int i=0;
-        //To take the input and check untill user inputs m
+
+        
+
+        
+        //We will stop checking when the user enters m 
+        //or if we find that the patter is invalid at any point of validation
         while(cha!='m' && valid)
+
         {
-           printsize(mystack);
-           printf(" You have  entered %c  , validity is %d , top is %d \n",cha,valid,mystack.top);
-           
-           if(cha=='D') 
+          //If the user entered C,it implies the charecters to follow
+          //will be the image of charecters before C
+          //If not its invalid
+          if(cha=='C')
+
            {
-             if(mystack.top!=-1)
-             {
-               valid=0;
-               break;
-             }
-           }
-           else if(cha=='C')
-           {
+             char poped;
              while(!isEmpty(mystack))
+
              {
-               printf("Enter the next Charecter");
-               scanf("%c",&cha);
-               if(cha!=pop(&mystack))
+
+               printf("Enter the  Charecter,If want to exit enter m \n");
+               scanf(" %c",&cha);
+               if(cha=='C') break;
+               else
                {
-                 valid=0;
-                 break;
+                  poped=pop(&mystack);
+                  
+                     if(cha!=poped)
+      
+                     {
+                        
+                       valid=0;
+      
+                       break;
+      
+                     }
+               }
+               
+
+             }
+             if(valid) 
+             {
+               
+               printf("Enter the  Charecter,If want to exit enter m \n");
+               scanf(" %c",&cha);
+               if(cha=='m') foundm=1;
+               else if(cha!='D') 
+               {
+               valid=0;
                }
              }
+             
+
            }
-           else
-           {
-             push(&mystack,cha);
-           }
-          if(valid)
+
+           else if(cha!='D')
           {
-            printf("Enter the next element");
-            scanf("%c",&cha);
+            
+             push(&mystack,cha);
+
+           }
+
+          if(valid && !foundm)
+
+          {
+              
+              printf("Enter the  Charecter,If want to exit enter m \n");
+              scanf(" %c",&cha);
+
           }
+
           
+
           
+
          }
+
          
-        if(valid ) printf("valid expression \n");
+
+        if(isEmpty(mystack) && valid ) printf("valid expression \n");
+
         else
+
         {
+
           printf("InValid expression");
+
         }
+
     
+
        
+
        
+
        
+
        
+
     }
