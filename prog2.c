@@ -22,12 +22,16 @@ typedef struct Temp_Park_Space
 
 void push_car_temp_park_space(TEMP_PARK_SPACE *TMPS,CAR car)
 {
+  printf("\n");
+  printf("iNSIDE TEMP PUSH AND CAR IFO %s\n",car.car_no);
   TMPS->car_list[++(TMPS->rear)]=car;
+  display_cars_temp_park_space(TMPS);
+  printf("\n");
 }
 
 CAR pop_car_temp_park_space(TEMP_PARK_SPACE *TMPS)
 {
-  return (TMPS->car_list[(TMPS->front)--]);
+  return (TMPS->car_list[(TMPS->front)++]);
 }
 
 int is_temp_park_space_full(TEMP_PARK_SPACE *TMPS)
@@ -42,7 +46,8 @@ int is_temp_park_space_empty(TEMP_PARK_SPACE *TMPS)
 
 void display_cars_temp_park_space(TEMP_PARK_SPACE *TMPS)
 {
-  for(int i=0;i<=TMPS->rear;i++) printf("%s \n",(TMPS->car_list[i]).car_no);
+  if(is_temp_park_space_empty(TMPS)) printf("Temp Park Space is empty \n");
+  else for(int i=TMPS->front;i<=TMPS->rear;i++) printf("%s \n",(TMPS->car_list[i]).car_no);
 }
           //TEMP_PARK_SPACE//
 //////////////////////////////////////////////////////
@@ -65,7 +70,7 @@ void push_car_main_park_space(MAIN_PARK_SPACE *MPS,CAR car)
 
 CAR pop_car_main_park_space(MAIN_PARK_SPACE *MPS)
 {
-   return MPS->car_list[(MPS->front)--];
+   return MPS->car_list[(MPS->front)++];
 }
 
 int is_main_park_space_full(MAIN_PARK_SPACE *MPS)
@@ -111,7 +116,7 @@ void push_car_waiting_list_space(WAITING_LIST_SPACE *WPS,CAR car)
 
 CAR pop_car_waiting_list_space(WAITING_LIST_SPACE *WPS)
 {
-   return WPS->car_list[(WPS->front)--];
+   return WPS->car_list[(WPS->front)++];
 }
 
 int is_waiting_list_space_full(WAITING_LIST_SPACE *WPS)
@@ -202,6 +207,24 @@ void main()
   char car_no[10];
   int choice;
   CAR my_car;
+  CAR other_car;
+  strcpy(other_car.car_no,"one");
+  
+  strcpy(my_car.car_no,"one");
+  
+  for(int i=0;i<=6;i++)
+  {
+    push_car_temp_park_space(&TMPS,my_car);
+  }
+  
+  printf("\n");
+  for(int i=0;i<=3;i++)
+  {
+    pop_car_temp_park_space(&TMPS);
+  }
+  display_cars_temp_park_space(&TMPS);
+  
+  /*
   printf("Enter\n");
   printf("1 To Input \n");
   printf("2 To display cars in Parking space \n");
@@ -229,35 +252,50 @@ void main()
       }
       else if(strcmp(instruction,"D")==0)
       {
+        //printf("232 \n");
+        int found=0;
+         //printf("234 \n");
         int i=0; 
+         //printf("236 \n");
         while(!is_main_park_space_empty(&MPS))
         { 
+          //printf("IS is_main_park_space_empty %d",is_main_park_space_empty(&MPS));
+          //printf("238\n");
           poped_car=pop_car_main_park_space(&MPS);
-          printf("%d \n",MPS.rear);
+          //printf("241\n");
+          printf("%d \n",i);
           i++;
+          //printf("244\n");
           if(strcmp((poped_car).car_no,car_reg_no)==0) 
           {
-            printf("Here is your CAR with %s registration no \n1",poped_car.car_no);
+            //printf("247\n");
+            printf("Here is your CAR with %s registration no. \n",poped_car.car_no);
+            //printf("249\n");
             printf("It moved %d times \n",poped_car.no_movements);
+            //printf("251\n");
+            found=1;
           }else
           {
+            printf("255\n");
+            
             push_car_temp_park_space(&TMPS,poped_car);  
+            display_cars_temp_park_space(&TMPS);
           }
           
            
         }
+        //printf("261\n");
         while(!is_temp_park_space_empty(&TMPS)) push_car_main_park_space(&MPS,pop_car_temp_park_space(&TMPS));
-        if(!is_waiting_list_space_empty(&WPS)) push_car_main_park_space(&MPS,pop_car_waiting_list_space(&WPS));
+        if(found)
+        {
+           //printf("265\n");
+          if(!is_waiting_list_space_empty(&WPS)) push_car_main_park_space(&MPS,pop_car_waiting_list_space(&WPS));
+        }
+        else printf("Car not found");
         
-         
         
         
-        
-        
-        
-       
-        
-      }else printf("Invalid Input");
+        }else printf("Invalid Input");
       break;
       case 2:display_cars__main_park_space_space(&MPS);
       break;
@@ -276,7 +314,7 @@ void main()
   scanf("%d",&choice);
   }
   
-  
+  */
   
     
     
